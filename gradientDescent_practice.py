@@ -20,7 +20,7 @@ def gradientDescent_2 (x, y, theta_init, alpha, iters_num):
     for i in range (0, iters_num):
         j_history[i] = computeCost(x, y, theta)
         hyp = np.dot(x,theta)
-        loss += hyp - y
+        loss = hyp - y
         theta = theta - alpha*(np.dot(x.T,loss))*(1/m)
 
     return j_history, theta

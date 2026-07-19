@@ -40,13 +40,13 @@ for i in range (0,5):
 # Dự đoán hàm linear
 xtest1 = [1, 3.5]
 xtest2 = [1, 7.0]
-print(f'Giá trị dự đoán 1: j_1 = {np.dot(xtest1, theta_1):.2f}')
-print(f'Giá trị dự đoán 2: j_1 = {np.dot(xtest2, theta_1):.2f}')
+print(f'Giá trị dự đoán 1: {np.dot(xtest1, theta_1):.2f}')
+print(f'Giá trị dự đoán 2: {np.dot(xtest2, theta_1):.2f}')
 # Dự đoán hàm bậc 2
 xtest3 = [1, 3.5, 12.25]
 xtest4 = [1, 7.0, 49.0]
-print(f'Giá trị dự đoán 1: j_2 = {np.dot(xtest3, theta_2):.2f}')
-print(f'Giá trị dự đoán 2: j_2 {np.dot(xtest4, theta_2):.2f}')
+print(f'Giá trị dự đoán 1: {np.dot(xtest3, theta_2):.2f}')
+print(f'Giá trị dự đoán 2: {np.dot(xtest4, theta_2):.2f}')
 #vẽ hàm linear
 x_plot = np.linspace(5,22.5,97)
 plt.figure(0)

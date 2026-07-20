@@ -25,8 +25,7 @@ print (f'Cost tìm được là: {cost:.2f}')
 #Thử tìm theta,j trong hàm linear
 j_1, theta_1 = gradientDescent_1(x, y, theta_init_1, alpha, iter_num)
 print ('Theta_1 tìm được là: ', np.round(theta_1,2))
-for i in range (0,5):
-    print(f'j_1 tìm được: {j_1[i]:.5f}')
+print("Cost 5 vòng cuối: j_1 = ", j_1[-5:])
 #Thử tìm theta, j trong hàm bậc 2
 x_square = x[:,1]**2
 xdata = x[:,1]
@@ -35,8 +34,7 @@ x_square_scaled = (x_square - np.mean(x_square)) / np.std(x_square)
 z = np.column_stack((np.ones(x.shape[0]), x_scaled, x_square_scaled))
 j_2, theta_2 = gradientDescent_2(z,y,theta_init_2,alpha, iter_num)
 print('Theta_2 tìm được là: ',np.round(theta_2,2))
-for i in range (0,5):
-    print(f'j_2 tìm được: {j_2[i]:.2f}')
+print("Cost 5 vòng cuối: j_2 = ", j_2[-5:])
 # Dự đoán hàm linear
 xtest1 = [1, 3.5]
 xtest2 = [1, 7.0]
@@ -48,13 +46,18 @@ xtest4 = [1, 7.0, 49.0]
 print(f'Giá trị dự đoán 1: {np.dot(xtest3, theta_2):.2f}')
 print(f'Giá trị dự đoán 2: {np.dot(xtest4, theta_2):.2f}')
 #vẽ hàm linear
-x_plot = np.linspace(5,22.5,97)
+x_plot = np.linspace(5,22.5,100)
+x_plot_scaled = (x_plot - np.mean(x_plot))/np.std(x_plot)
+x_plot_square = x_plot**2
+x_plot_square_scaled = (x_plot_square - np.mean(x_plot_square))/np.std(x_plot_square)
+z_plot = np.column_stack((np.ones(100), x_plot_scaled, x_plot_square_scaled))
 plt.figure(0)
 plt.scatter(xData, yData, c = 'red', marker = 'x', s = 20)
 plt.plot(x[:,1], np.dot(x,theta_1), c = 'blue', lw = 2)
-plt.plot(x_plot, np.dot(z,theta_2), c= 'green', lw = 2)
+plt.plot(x_plot, np.dot(z_plot,theta_2), c= 'green', lw = 2)
 plt.xlabel("Population")
 plt.ylabel("Profit")
 plt.legend(['Data point', 'Hàm tuyến tính', 'Hàm bậc 2'], loc = 'upper left', bbox_to_anchor=(1.02, 1))
 plt.tight_layout()
-plt.show()
+plt.show() 
+
